@@ -1,0 +1,23 @@
+#!/usr/bin/env fish
+
+# Get the most recently modified item
+set latest (ls -t | head -1)
+# Get it's extention (if it exists)
+set extention (echo $latest | cut -d '.' -f2)
+
+# Test if the latest item is a file
+if [ -f $latest ]
+    # Test if it's a java file
+    if [ $extention = "java" ]
+        # Compile & run
+        javac $latest && java (echo $latest | cut -d'.' -f1)
+    else
+        echo "Recently modified file isn't a java file."
+        echo -n "File: "
+        echo $latest
+    end
+else
+    echo "Can't find recently modified file."
+    echo -n "Found: "
+    echo $latest
+end
