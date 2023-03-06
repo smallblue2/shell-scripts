@@ -8,12 +8,14 @@ set extention (echo $latest | cut -d '.' -f2)
 
 # Test if the latest item is a file
 if [ -f $latest ]
-    # Test if it's a java file
-    if [ $extention = "java" ]
+    # Test if it's a c file
+    if [ $extention = "c" ]
         # Compile & run
-        javac $latest && java (echo $latest | cut -d'.' -f1)
+        set binaryname (echo $latest | cut -d'.' -f1)
+        gcc $latest -o $binaryname
+        exec ./$binaryname
     else
-        echo "Recently modified file isn't a java file."
+        echo "Recently modified file isn't a c file."
         echo -n "File: "
         echo $latest
     end
