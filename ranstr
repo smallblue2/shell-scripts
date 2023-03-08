@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+if [ -z "$1" ]
+then
+    tr -dc A-Za-z0-9 </dev/urandom | head -c 15;echo ''
+    exit 0
+fi
+
+tr -dc A-Za-z0-9 </dev/urandom | head -c $1; echo ''
