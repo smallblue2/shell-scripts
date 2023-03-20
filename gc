@@ -3,13 +3,13 @@
 
 # Get the most recently modified item
 set latest (ls -t | head -1)
-# Get it's extention (if it exists)
-set extention (echo $latest | cut -d '.' -f2)
+# Get it's extension (if it exists)
+set extension (echo $latest | cut -d '.' -f2)
 
 # Test if the latest item is a file
 if [ -f $latest ]
     # Test if it's a c file
-    if [ $extention = "c" ]
+    if [ $extension = "c" ]
         # Compile & run
         set binaryname (echo $latest | cut -d'.' -f1)
         gcc $latest -o $binaryname
