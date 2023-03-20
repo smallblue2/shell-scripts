@@ -9,7 +9,9 @@ if not set -q $argv[1]
         # Check if file exists
         if [ -e $argv[1] ]
         # Run pmd, redirect output to out.html, run it with firefox, and remove it
-    	    $HOME/pmd-bin-6.55.0/bin/run.sh pmd -f html -R rulesets/java/quickstart.xml -d $argv[1] > out.html && firefox ./out.html && sleep 0.1 && rm ./out.html
+    	    $HOME/pmd-bin-6.55.0/bin/run.sh pmd -f html -R rulesets/java/quickstart.xml -d $argv[1] > out.html
+            firefox ./out.html
+            rm ./out.html
         else
             echo "File does not exist."
         end
